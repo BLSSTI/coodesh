@@ -34,7 +34,7 @@ Versão do node: **16.19.0**
 
 
 ```http
-  GET /api/items
+  GET /api/plans
 ```
 
 | Parâmetro   |     Descrição                           |
