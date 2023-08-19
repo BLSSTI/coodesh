@@ -2,6 +2,7 @@ import * as path from "node:path";
 const __dirname = './';
 import * as fs from "node:fs";
 import { planFilteredUseCase } from "../../app/useCases/plans/plans.useCase.js";
+import { plansController } from "../controllers/plansController.js";
 export const routes = {
     GET: [
       {
@@ -23,15 +24,7 @@ export const routes = {
       {
         path: "/api/plans",
         handler: async (req, res) => {
-          try {
-            const result =  planFilteredUseCase();
-            res.writeHead(200, { "Content-Type": "application/json" });
-            res.end(JSON.stringify(result));
-          } catch (error) {
-            console.error("Erro ao executar use case:", error);
-            res.writeHead(500, { "Content-Type": "application/json" });
-            res.end(JSON.stringify({ error: "Erro interno no servidor" }));
-          }
+          plansController.handlePlansRequest(req,res);
         },
       },
     ],

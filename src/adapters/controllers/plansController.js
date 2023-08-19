@@ -3,7 +3,7 @@ import { planFilteredUseCase } from "../../app/useCases/plans/plans.useCase.js";
 const plansController = {
   async handlePlansRequest(req, res) {
     try {
-      const result = planFilteredUseCase();
+      const result =  planFilteredUseCase();
       res.writeHead(200, { "Content-Type": "application/json" });
       res.end(JSON.stringify(result));
     } catch (error) {
