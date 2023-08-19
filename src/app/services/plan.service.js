@@ -19,7 +19,7 @@ const  getUniquePlansWithPriority = (plans)  =>{
       if (a.localidade.prioridade !== b.localidade.prioridade) {
         return b.localidade.prioridade - a.localidade.prioridade;
       }
-      return b.schedule - a.schedule;
+      return new Date(b.schedule.startDate).getTime() - new Date(a.schedule.startDate).getTime();
     });
   }
 
