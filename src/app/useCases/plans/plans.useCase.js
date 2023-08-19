@@ -19,8 +19,8 @@ const planFilteredUseCase = () => {
   const validPlans = filterValidPlans(data.plans, currentDate);
   const uniquePlans = getUniquePlansWithPriority(validPlans);
   sortPlansByPriorityAndDate(uniquePlans);
-
-  return uniquePlans;
+  
+  return {plans: uniquePlans, phone: data.Aparelho.name};
 };
 
 export { planFilteredUseCase };

@@ -14,14 +14,14 @@ const  getUniquePlansWithPriority = (plans)  =>{
     return Array.from(uniquePlansMap.values());
   }
   
-  const sortPlansByPriorityAndDate = (plans) => {
-    plans.sort((a, b) => {
-      if (a.localidade.prioridade !== b.localidade.prioridade) {
-        return b.localidade.prioridade - a.localidade.prioridade;
-      }
-      return new Date(b.schedule.startDate).getTime() - new Date(a.schedule.startDate).getTime();
-    });
-  }
+const sortPlansByPriorityAndDate = (plans) => {
+  plans.sort((a, b) => {
+    if (a.localidade.prioridade !== b.localidade.prioridade) {
+      return b.localidade.prioridade - a.localidade.prioridade;
+    }
+    return new Date(b.schedule.startDate).getTime() - new Date(a.schedule.startDate).getTime();
+  });
+}
 
   const filterValidPlans = (plans, currentDate) => {
     return plans.filter(plan => new Date(plan.schedule.startDate).getTime() < currentDate.getTime());

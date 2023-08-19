@@ -135,16 +135,17 @@
 
     async function renderPlans() {
       const plansRow = document.getElementById('plansRow');
-      const plans = await fetchPlans();
-
-      plans.forEach(plan => {
+      const data = await fetchPlans();
+      console.log(data.plans)
+      data.plans.forEach(plan => {
         const planColumn = document.createElement('div');
         planColumn.classList.add('col-md-4', 'col-sm-6');
-
+  
         const pricingTable = document.createElement('div');
         pricingTable.classList.add('pricingTable');
         pricingTable.innerHTML = `
           <div class="pricingTable-header mb-4">
+           
             <h3 class="title">${plan.name}</h3>
           </div>
           <div class="pricing-content">
@@ -154,9 +155,10 @@
             </div>
             <ul>
                 <li>Plano: <strong>${plan.type}</strong></li>
+                <li>Aparelho: <strong> ${data.phone}</strong> </li>
                 <li><strong>De: <del>${plan.phonePrice}</del> Por: ${plan.phonePriceOnPlan}</strong> </li>
-                <li><span class="glyphicon glyphicon-map-marker"></span> <strong>${plan.localidade.nome}</strong></li>
                 <li>Em até<strong> ${plan.installments}x</strong>  <span>SEM JUROS </span></li>
+                <li><span class="glyphicon glyphicon-map-marker"></span> <strong>${plan.localidade.nome}</strong></li>
             </ul>
           </div>
           <div class="pricingTable-signup">
